@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import { PrismaClient } from "../../generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import { generateToken } from "../../middleware/jwt/jwt";
 import { profile } from "console";
 const prisma = new PrismaClient();

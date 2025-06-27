@@ -1,6 +1,6 @@
 import { sendErrorResponse, sendSucessResponse } from "../../utils/helper/httpRes/httpres";
 import { Request, Response, NextFunction } from "express";
-import { PrismaClient } from "../../generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import { getEmbedding } from "../../utils/pinecone/getEmbedding";
 import { saveToPinecone } from "../../utils/pinecone/saveToPinecone"
 
