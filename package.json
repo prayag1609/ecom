@@ -1,0 +1,53 @@
+{
+  "name": "mongo-ecom",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@huggingface/inference": "^4.0.6",
+    "@pinecone-database/pinecone": "^6.1.1",
+    "@prisma/client": "^6.10.1",
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.7.0",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "langchain": "^0.3.29",
+    "mongodb": "^6.17.0",
+    "openai": "^5.7.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "prisma": "^6.10.1",
+    "session": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.3",
+    "@types/express-session": "^1.18.2",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^1.4.13",
+    "@types/node": "^24.0.3",
+    "@types/passport": "^1.0.17",
+    "@types/passport-google-oauth20": "^2.0.16",
+    "axios": "^1.10.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "multer": "^2.0.1",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}

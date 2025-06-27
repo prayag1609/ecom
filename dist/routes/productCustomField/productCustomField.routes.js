@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const jwt_1 = require("../../middleware/jwt/jwt");
+const productCustomField_controller_1 = require("../../controller/productCustom/productCustomField.controller");
+const router = (0, express_1.Router)();
+router.post("/:id", jwt_1.verifyToken, productCustomField_controller_1.createProductCustomField);
+router.get("/", jwt_1.verifyToken, productCustomField_controller_1.getProductCustomFields);
+router.put("/:id", jwt_1.verifyToken, productCustomField_controller_1.updateProductCustomField);
+router.delete("/:id", jwt_1.verifyToken, productCustomField_controller_1.deleteProductCustomField);
+exports.default = router;

@@ -1,0 +1,71 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+enum role {
+  seller
+  buyer
+}
+
+model user {
+  id       String   @id @default(uuid())
+  email    String   @unique
+  password String?
+  googleId String?
+  name     String
+  role     role
+
+  product  product[] @relation("UserProducts")
+  kart     kart[]    @relation("UserKarts")
+}
+
+model product {
+  id          String                     @id @default(uuid())
+  name        String
+  price       Float
+  description String
+  category    String
+  features    Json
+  image       Json
+  quantity    Int
+  sellerId    String
+  createAt    DateTime                   @default(now())
+  updateAt    DateTime                   @default(now())
+
+  seller             user                 @relation("UserProducts", fields: [sellerId], references: [id])
+  kart               kart[]               @relation("ProductKarts")
+  productCustomField productCustomField[]
+}
+
+model kart {
+  id        String   @id @default(uuid())
+  userId    String
+  productId String
+  quantity  Int
+  createAt  DateTime @default(now())
+  updateAt  DateTime @default(now())
+
+  user    user    @relation("UserKarts", fields: [userId], references: [id])
+  product product @relation("ProductKarts", fields: [productId], references: [id])
+}
+
+model productCustomField {
+  id         String   @id @default(uuid())
+  seller_id  String
+  product_id String
+  field_name String
+  field_type String
+  isRequired Boolean  @default(false)
+  options    String[]
+  status     Boolean  @default(true)
+  createAt   DateTime @default(now())
+  updateAt   DateTime @default(now())
+
+  product product @relation(fields: [product_id], references: [id], onDelete: Cascade)
+}

@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const buyer_controller_1 = require("../../controller/buyer/buyer.controller");
+const jwt_1 = require("../../middleware/jwt/jwt");
+const router = (0, express_1.Router)();
+// router.post('/product', verifyToken, uploads.si/ngle("image") ,createProduct);
+router.get('/product', jwt_1.verifyToken, buyer_controller_1.listProduct);
+router.get('/product/:id/:quantity', jwt_1.verifyToken, buyer_controller_1.addProduct);
+router.get('/kart', jwt_1.verifyToken, buyer_controller_1.viewKart);
+// router.post('/login',userLogin);
+exports.default = router;
